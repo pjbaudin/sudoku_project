@@ -22,6 +22,9 @@ class MainWindow(QMainWindow):
         start_button.clicked.connect(self.start_clicked)
         start_button.clicked.connect(self.start_toggle)
 
+        end_button = QPushButton("Stop!")
+        end_button.setCheckable(True)
+
         # Set the central widget of the Window.
         self.setCentralWidget(start_button)
 
