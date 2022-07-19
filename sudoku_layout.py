@@ -22,13 +22,44 @@ def generate_array():
           [8,1,3]],
          [[6,7,2],
           [2,4,1],
-          [7,3,4]]
+          [7,3,4]],
+         [[4,1,3],
+          [7,1,6],
+          [6,1,5]],
+         [[1,1,9],
+          [2,1,4],
+          [5,1,6]],
+         [[9,1,2],
+          [3,1,4],
+          [8,1,3]],
+         [[6,7,2],
+          [2,4,1],
+          [7,3,4]],
+         [[4,1,3],
+          [7,1,6],
+          [6,1,5]]
          ])
 
 def create_square(grid_layout: QGridLayout, color:str):
     for i in range(0, 3):
         for j in range(0, 3):
             grid_layout.addWidget(Color(color), i, j)
+
+def gen_display_position():
+    position_1 = [[i, j] for i in range(3) for j in range(3)]
+    position_2 = [[i, j+3] for i in range(3) for j in range(3)]
+    position_3 = [[i, j+6] for i in range(3) for j in range(3)]
+    position_4 = [[i+3, j] for i in range(3) for j in range(3)]
+    position_5 = [[i+3, j+3] for i in range(3) for j in range(3)]
+    position_6 = [[i+3, j+6] for i in range(3) for j in range(3)]
+    position_7 = [[i+6, j] for i in range(3) for j in range(3)]
+    position_8 = [[i+6, j+3] for i in range(3) for j in range(3)]
+    position_9 = [[i+6, j+6] for i in range(3) for j in range(3)]
+
+    positions = position_1 + position_2 + position_3 + position_4 +position_5 + position_6 +position_7 + position_8 + position_9
+
+    return positions 
+
 
 class Color(QWidget):
 
@@ -50,12 +81,7 @@ class MainWindow(QMainWindow):
         arr = generate_array()
         it = np.nditer(arr, flags=['multi_index'])
 
-        position_1 = [[i, j] for i in range(3) for j in range(3)]
-        position_2 = [[i, j+3] for i in range(3) for j in range(3)]
-        position_3 = [[i, j+6] for i in range(3) for j in range(3)]
-        position_4 = [[i+3, j] for i in range(3) for j in range(3)]
-
-        positions = position_1 + position_2 + position_3 + position_4
+        positions = gen_display_position()
 
         layout = QGridLayout()
 
